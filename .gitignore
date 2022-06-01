@@ -31,3 +31,5 @@
 /config/master.key
 
 /config/db.rb
+
+node_modules/
