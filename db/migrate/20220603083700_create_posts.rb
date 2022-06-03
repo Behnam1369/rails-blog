@@ -6,6 +6,8 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :text
 
       t.timestamps
+      t.integer :comments_counter
+      t.integer :likes_counter
     end
 
     add_foreign_key :posts, :users, column: :author_id, primary_key: :id
