@@ -5,15 +5,11 @@ class Post < ApplicationRecord
 
   def update_post_counter
     author = self.author
-    if author.posts_counter.nil?
-      author.posts_counter = 1
-    else
-      author.posts_counter += 1
-    end
+    author.posts_counter = author.posts_counter.nil? ? 1 : author.posts_counter + 1
     author.save
   end
 
   def last_5_comments
-    Comment.where(post: self).last(5)
+    comments.where(post: self).last(5)
   end
 end
