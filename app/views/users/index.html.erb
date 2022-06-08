@@ -1,1 +1,20 @@
 <h1>List of Users: </h1>
+<ul>
+  <% User.all.each do |user| %>
+  <li class="user">
+    <img src="<%= user.photo %>" alt=<%= user.name %>>
+    <div>
+    <a href="/users/<%= user.id %>">
+      <h2><%= user.name %></h2>
+    </a>
+    <span>
+      <% if user.posts_counter.nil? %>
+        No post yet
+      <% else %> 
+        <a href="/users/<%= user.id %>/posts"> Number of posts: <%= user.posts_counter %> </a>
+      <% end %>
+    </span>
+    </div>
+  </li>
+  <% end %>
+</ul>
