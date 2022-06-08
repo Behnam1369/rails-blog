@@ -15,7 +15,9 @@
           "apply",
           "variants",
           "responsive",
-          "screen"
+          "screen",
+          "mixin",
+          "include"
         ]
       }
     ],
