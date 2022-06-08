@@ -1,1 +1,38 @@
-<h1>User <%= params["id"]%> Profile</u>
+<div class="user">
+  <% user = User.find(params["id"]) %>
+    <img src="<%= user.photo %>" alt=<%= user.name %>>
+    <div>
+    <a href="/users/<%= user.id %>">
+      <h2><%= user.name %></h2>
+    </a>
+    <span>
+      <% if user.posts_counter.nil? %>
+        No post yet
+      <% else %> 
+        <a href="/users/<%= user.id %>/posts"> Number of posts: <%= user.posts_counter %> </a>
+      <% end %>
+    </span>
+    </div>
+</div>
+<p class="bio">
+  <b>Bio:</b>
+  <br/>
+  <br/>
+  <%= user.bio %>
+</p>
+<ul>
+  <% user.last_3_posts.each do |post| %>
+    <li class="post">
+      <a href="/users/<%= user.id %>/posts/<%= post.id %>"> 
+        <h2><%= post.title %></h2> 
+        <p><%= post.text.length > 100 ? post.text[0..120] + '...' : post.text %></p>
+        <span>Likes: <%= post.likes_counter.nil? ? '0' : post.likes_counter %> </span>
+        <span>Comments: <%= post.comments_counter.nil? ? '0' : post.comments_counter %> </span>
+      </a>
+    </li>
+  <% end %>
+</ul>
+<div class="links">
+  <a href="/users" class="btn"> Go back to users </a>
+  <a href="/users/<%= user.id %>/posts" class="btn"> See all posts </a>
+</div>

@@ -1,1 +1,45 @@
-<h1>List of posts written by users <%= params["user_id"]%> </h1>
+<div class="user">
+  <% user = User.find(params["user_id"]) %>
+    <img src="<%= user.photo %>" alt=<%= user.name %>>
+    <div>
+    <a href="/users/<%= user.id %>">
+      <h2><%= user.name %></h2>
+    </a>
+    <span>
+      <% if user.posts_counter.nil? %>
+        No post yet
+      <% else %> 
+        <a href="/users/<%= user.id %>/posts"> Number of posts: <%= user.posts_counter %> </a>
+      <% end %>
+    </span>
+    </div>
+</div>
+<ul>
+  <% Post.where(author: user).each do |post| %>
+    <li class="post">
+      <a href="/users/<%= user.id %>/posts/<%= post.id %>"> 
+        <h2><%= post.title %></h2> 
+        <p><%= post.text.length > 100 ? post.text[0..120] + '...' : post.text %></p>
+        <span>Likes: <%= post.likes_counter.nil? ? '0' : post.likes_counter %> </span>
+        <span>Comments: <%= post.comments_counter.nil? ? '0' : post.comments_counter %> </span>
+      </a>
+      <div class="comments">
+      <hr/>
+      <h4>Comments:</h4>
+        <ul>
+        <% post.last_5_comments.each do |comment| %>
+          <li>
+            <b><%= comment.author.name %>:  </b>
+            <span><%= comment.text %></span>
+            <span class="commentTime">(<%= comment.updated_at.strftime('%Y-%m-%d') %>)</span>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<div class="links">
+  <a href="/users/<%= user.id %>" class="btn"> Go back to user page </a>
+  <a href="/users" class="btn"> See all users </a>
+</div>

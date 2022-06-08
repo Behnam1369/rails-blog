@@ -1,0 +1,196 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$c1: #8430d9;
+$c2: #600db1;
+
+@mixin user {
+  .user {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    justify-content: space-around;
+
+    img {
+      border: solid 10px #ffffff21;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+    }
+
+    div {
+      background-color: $c2;
+      border-radius: 20px;
+      color: #fff;
+      padding: 10px 20px 10px 30px;
+      width: calc(100% - 180px);
+
+      a {
+        text-decoration: none;
+        color: #fff;
+
+        h2 {
+          text-align: left;
+          font-size: 25px;
+        }
+      }
+
+      a:hover {
+        color: yellow;
+      }
+
+      span {
+        float: right;
+        color: rgba(255, 255, 255, 0.59);
+        font-size: 16px;
+      }
+    }
+  }
+
+  div.user {
+    padding-bottom: 2px;
+
+    div {
+      // border-radius: 20px 20px 0 0;
+      background-image: linear-gradient(to bottom, $c2, #4a0b87);
+    }
+  }
+}
+
+@mixin bio {
+  >p {
+    width: calc(100% - 80px);
+    background-image: linear-gradient(to bottom, #600db187, $c2);
+    border-radius: 20px;
+    font-size: 19px;
+    text-align: left;
+    margin: 0 10px;
+    padding: 30px;
+  }
+}
+
+@mixin post {
+  .post {
+    width: calc(100% - 20px);
+    background-color: #5f0db13e;
+    border-radius: 20px;
+    text-align: left;
+    margin: 10px;
+    padding: 0;
+    list-style: none;
+    // background-image: linear-gradient(0deg, #600db136, #600db1);
+
+    a,
+    >div {
+      color: white;
+      text-decoration: none;
+      padding: 30px;
+      display: block;
+
+      p {
+        padding: 0;
+        margin: 0;
+        // width: calc(100% - 20px);
+        margin-bottom: 40px;
+      }
+
+      p.articleText {
+        margin-top: 80px;
+      }
+
+      span {
+        float: right;
+        margin-left: 30px;
+        font-size: 14px;
+        color: #ffffffa1;
+      }
+    }
+  }
+}
+
+@mixin comments {
+  .comments {
+    padding: 30px;
+
+    ul {
+      padding: 0;
+
+      li {
+        list-style: none;
+        margin: 5px 5px 5px 30px;
+
+        span {
+          color: #fff;
+          float: none;
+          margin: 0;
+          font-style: italic;
+        }
+
+        span.commentTime {
+          color: #ffffffa1;
+        }
+      }
+    }
+  }
+}
+
+html {
+  background-color: $c1;
+  color: #fff;
+  font-family: Helvetica, sans-serif;
+
+  body {
+    width: 100%;
+    max-width: 780px;
+    margin: auto;
+
+    @include user;
+    @include bio;
+    @include post;
+    @include comments;
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .links {
+      display: flex;
+      gap: 10px;
+      justify-content: space-around;
+      padding: 10px;
+
+      a {
+        border: solid 1px rgba(255, 255, 255, 0.566);
+        border-radius: 5px;
+        padding: 10px;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      a:hover {
+        background-color: rgba(255, 255, 255, 0.068);
+      }
+    }
+  }
+}

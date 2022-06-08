@@ -1,1 +1,29 @@
-<h1>Post <%=params["id"] %> (author: user<%=params["user_id"] %> )</h1>
+<%
+  post = Post.find(params["id"])
+  author = post.author
+%>
+  <div class="post">
+    <div> 
+      <h2><%= post.title %></h2>
+      <h3>Author: <a href="/users/<%= author.id %>" style="padding:0; display: inline"><%= author.name %></a></h3> 
+      <p>
+        <span>Likes: <%= post.likes_counter.nil? ? '0' : post.likes_counter %> </span>
+        <span>Comments: <%= post.comments_counter.nil? ? '0' : post.comments_counter %> </span>
+      </p>
+      <p class="articleText"><%= post.text %></p>
+      <span>Post date: <%= post.created_at.strftime('%Y-%m-%d') %> </span>
+    </div>
+    <div class="comments">
+    <hr/>
+    <h4>Comments:</h4>
+      <ul>
+      <% Comment.where(post: post).each do |comment| %>
+        <li>
+          <b><%= comment.author.name %>:</b>
+          <span><%= comment.text %></span>
+          <span class="commentTime">(<%= comment.updated_at.strftime('%Y-%m-%d') %>)</span>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
