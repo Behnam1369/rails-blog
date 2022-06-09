@@ -39,4 +39,16 @@ class PostsController < ApplicationController
       render :new, locals: { post: }
     end
   end
+
+  skip_before_action :verify_authenticity_token
+  def like_toggle
+    @post = Post.find(params['id'])
+    if Like.where(post: @post, author: current_user).empty?
+      like = Like.new(post: @post, author: current_user)
+      like.save
+    else
+      like = Like.where(post: @post, author: current_user)
+      like.destroy_all
+    end
+  end
 end
