@@ -25,7 +25,7 @@
     <li class="post">
       <a href="/users/<%= user.id %>/posts/<%= post.id %>"> 
         <h2><%= post.title %></h2> 
-        <p><%= post.text.length > 100 ? post.text[0..120] + '...' : post.text %></p>
+        <p><%= (post.text.nil? ? '' : post.text).length > 100 ? post.text[0..120] + '...' : post.text %></p>
         <span>Likes: <%= post.likes_counter.nil? ? '0' : post.likes_counter %> </span>
         <span>Comments: <%= post.comments_counter.nil? ? '0' : post.comments_counter %> </span>
       </a>

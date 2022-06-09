@@ -65,7 +65,7 @@ $c2: #600db1;
 
     div {
       // border-radius: 20px 20px 0 0;
-      background-image: linear-gradient(to bottom, $c2, #4a0b87);
+      background-image: linear-gradient(to top, $c2, #4a0b87);
     }
   }
 }
@@ -73,7 +73,7 @@ $c2: #600db1;
 @mixin bio {
   >p {
     width: calc(100% - 80px);
-    background-image: linear-gradient(to bottom, #600db187, $c2);
+    background-image: linear-gradient(to top, #600db187, $c2);
     border-radius: 20px;
     font-size: 19px;
     text-align: left;
