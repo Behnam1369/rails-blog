@@ -65,7 +65,7 @@ $c2: #600db1;
 
     div {
       // border-radius: 20px 20px 0 0;
-      background-image: linear-gradient(to bottom, $c2, #4a0b87);
+      background-image: linear-gradient(to top, $c2, #4a0b87);
     }
   }
 }
@@ -73,7 +73,7 @@ $c2: #600db1;
 @mixin bio {
   >p {
     width: calc(100% - 80px);
-    background-image: linear-gradient(to bottom, #600db187, $c2);
+    background-image: linear-gradient(to top, #600db187, $c2);
     border-radius: 20px;
     font-size: 19px;
     text-align: left;
@@ -116,6 +116,20 @@ $c2: #600db1;
         margin-left: 30px;
         font-size: 14px;
         color: #ffffffa1;
+      }
+    }
+
+    form {
+      a {
+        display: inline-block;
+        color: #fffe8c;
+      }
+
+      input[type="submit"] {
+        background-color: transparent;
+        border: none;
+        color: #fffe8c;
+        cursor: pointer;
       }
     }
   }
@@ -190,6 +204,61 @@ html {
 
       a:hover {
         background-color: rgba(255, 255, 255, 0.068);
+      }
+    }
+
+    form[action$="new"] {
+      text-align: center;
+
+      div {
+        text-align: left;
+
+        input[type="text"],
+        textarea {
+          width: calc(100% - 10px);
+          font-family: Helvetica, sans-serif;
+          border-radius: 10px;
+          border: solid 3px #fff;
+          background-color: #fffc;
+          color: $c2;
+          font-size: 22px;
+          outline: none;
+          margin: 10px 0;
+        }
+
+        input[type="text"] {
+          height: 35px;
+        }
+
+        textarea {
+          height: 250px;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+          border: solid 3px $c2;
+          background-color: #fff;
+        }
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        font-family: Helvetica, sans-serif;
+        border-radius: 10px;
+        background-color: $c2;
+        color: yellow;
+        font-size: 25px;
+        outline: none;
+        height: 60px;
+        border: solid 3px $c2;
+        margin: auto;
+        opacity: 0.9;
+      }
+
+      input[type="submit"]:hover {
+        background-color: $c2;
+        opacity: 1;
+        cursor: pointer;
       }
     }
   }

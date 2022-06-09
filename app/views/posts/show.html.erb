@@ -26,4 +26,8 @@
       <% end %>
       </ul>
     </div>
+    <%= form_with model: @like,  url: "/users/#{params['user_id']}/posts/#{params['id']}/like_toggle", method: :post , local: true do |form|%>
+      <a href=<%="#{post.id}/comments/new"%>>Add comment</a>
+      <%= form.submit "Like/Unlike this post" %>
+    <% end %>
   </div>
