@@ -118,6 +118,20 @@ $c2: #600db1;
         color: #ffffffa1;
       }
     }
+
+    form {
+      a {
+        display: inline-block;
+        color: #fffe8c;
+      }
+
+      input[type="submit"] {
+        background-color: transparent;
+        border: none;
+        color: #fffe8c;
+        cursor: pointer;
+      }
+    }
   }
 }
 
