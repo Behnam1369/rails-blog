@@ -18,12 +18,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(params.require(:post).permit(:title, :text))
     @post.author = current_user
+    @post.comments_counter = 0
+    @post.likes_counter = 0
     if @post.save
-      flash[:success] = 'Post saved successfully'
-      redirect_to '/posts/new'
+      redirect_to "/users/#{@post.author.id}/posts/#{@post.id}"
     else
-      flash.now[:error] = 'Error: Question could not be saved'
-      render :new, locals: { post: }
+      flash[:error] = 'Error: post could not be saved'
+      render :new
     end
   end
 
@@ -31,12 +32,14 @@ class PostsController < ApplicationController
     @post = Post.find(params['id'])
     @post['title'] = params[:post][:title]
     @post['text'] = params[:post][:text]
+    @post['comments_counter'] = 0 if params[:post][:comments_counter].nil?
+    @post['likes_counter'] = 0 if params[:post][:likes_counter].nil?
+
     if @post.save
-      flash[:success] = 'Post saved successfully'
-      redirect_to '/posts/new'
+      redirect_to "/users/#{@post.author.id}/posts/#{params['id']}"
     else
-      flash.now[:error] = 'Error: Question could not be saved'
-      render :new, locals: { post: }
+      flash.now[:error] = 'Error: Post could not be saved'
+      render :edit
     end
   end
 
