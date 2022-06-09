@@ -17,7 +17,7 @@
     <hr/>
     <h4>Comments:</h4>
       <ul>
-      <% Comment.where(post: post).each do |comment| %>
+      <% Comment.includes(:author).where(post: post).each do |comment| %>
         <li>
           <b><%= comment.author.name %>:</b>
           <span><%= comment.text %></span>
