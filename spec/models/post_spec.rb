@@ -68,7 +68,7 @@ RSpec.describe Post, type: :model do
     user = User.new(name: 'user1', posts_counter: 0)
     user.save
 
-    post = Post.new(title:'New post', text: 'post body', author: user, comments_counter: 0, likes_counter: 0)
+    post = Post.new(title: 'New post', text: 'post body', author: user, comments_counter: 0, likes_counter: 0)
     post.save
 
     10.times do
