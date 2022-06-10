@@ -207,7 +207,8 @@ html {
       }
     }
 
-    form[action$="new"] {
+    form[action$="new"],
+    form[action$="edit"] {
       text-align: center;
 
       div {

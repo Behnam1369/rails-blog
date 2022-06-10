@@ -3,8 +3,8 @@ class Like < ApplicationRecord
   belongs_to :post
 
   def update_like_counter
-    author = self.author
-    author.likes_counter = author.likes_counter.nil? ? 1 : author.likes_counter + 1
-    author.save
+    post = self.post
+    post.likes_counter = post.likes_counter.nil? ? 1 : post.likes_counter + 1
+    post.save
   end
 end
