@@ -23,7 +23,7 @@ end
 RSpec.describe 'Requesting "/users/:id": ', type: :request do
   user = User.new(name: 'Behnam', posts_counter: 0)
   user.save
-  
+
   it 'should return a response with status code 200.' do
     get "/users/#{user.id}"
     expect(response).to have_http_status(200)
