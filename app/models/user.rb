@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def last_3_posts
     posts.where(author: self).last(3)
   end
+
+  def default_image
+    'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/1684840/ff056d537780500b7ed8823881b014176c6f2085.jpg'
+  end
 end
