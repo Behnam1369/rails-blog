@@ -22,6 +22,9 @@
           <b><%= comment.author.name %>:</b>
           <span><%= comment.text %></span>
           <span class="commentTime">(<%= comment.updated_at.strftime('%Y-%m-%d') %>)</span>
+          <% if can? :destroy , comment %>
+            <%= button_to "Delete comment", "/users/#{post.author.id}/posts/#{post.id}/comments/#{comment.id}/delete", method: :delete, class:'link' %>
+          <% end %>
         </li>
       <% end %>
       </ul>
