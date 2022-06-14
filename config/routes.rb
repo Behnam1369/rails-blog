@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/users/:user_id/posts/:id/like_toggle', to: 'posts#like_toggle'
   get '/users/:user_id/posts/:post_id/comments/new', to: 'comments#new'
   post '/users/:user_id/posts/:post_id/comments/new', to: 'comments#create'
+  delete '/users/:user_id/posts/:post_id/comments/:id/delete', to: 'comments#delete'
   get '/users', to: 'users#index'
   get '/', to: 'users#index'
   get '/users/:id', to: 'users#show'
