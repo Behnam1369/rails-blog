@@ -31,6 +31,6 @@
       <%= form.submit "Like/Unlike this post" %>
     <% end %>
     <% if can? :destroy , post %>
-      <%= button_to "Delete post", "/posts/#{post.id}/delete", data: {turbo: false}, method: :delete, class:'link' %>
+      <%= button_to "Delete post", "/posts/#{post.id}/delete", method: :delete, class:'link' %>
     <% end %>
   </div>

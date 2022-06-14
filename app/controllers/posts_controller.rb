@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   def index
     params
@@ -47,9 +47,11 @@ class PostsController < ApplicationController
 
   def delete
     @post = Post.find(params['id'])
-
+    
     if @post.destroy
-      redirect_to "/users/#{@post.author.id}/posts", allow_other_host: true
+      redirect_to "/users/#{@post.author.id}/posts",
+        allow_other_host: true, 
+        notice: 'Post deleted'
     else
       flash.now[:error] = 'Error: Post could not be deleted'
       render :show
