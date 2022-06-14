@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     params
   end
@@ -43,6 +45,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def delete
+    @post = Post.find(params['id'])
+
+    if @post.destroy
+      redirect_to "/users/#{@post.author.id}/posts", allow_other_host: true
+    else
+      flash.now[:error] = 'Error: Post could not be deleted'
+      render :show
+    end
+  end
+
   skip_before_action :verify_authenticity_token
   def like_toggle
     @post = Post.find(params['id'])
@@ -57,5 +70,9 @@ class PostsController < ApplicationController
     end
     @post.save
     redirect_to "/users/#{params['user_id']}/posts/#{params['id']}"
+  end
+
+  def post_params
+    params.require(:post).permit!
   end
 end
