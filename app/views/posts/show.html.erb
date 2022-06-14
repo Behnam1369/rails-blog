@@ -30,4 +30,7 @@
       <a href=<%="#{post.id}/comments/new"%>>Add comment</a>
       <%= form.submit "Like/Unlike this post" %>
     <% end %>
+    <% if can? :destroy , post %>
+      <%= button_to "Delete post", "/posts/#{post.id}/delete", data: {turbo: false}, method: :delete, class:'link' %>
+    <% end %>
   </div>
