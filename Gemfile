@@ -56,6 +56,7 @@ group :development, :test do
   gem 'ffi'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.1.2'
+  gem 'letter_opener'
 end
 
 group :development do
