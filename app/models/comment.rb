@@ -9,9 +9,6 @@ class Comment < ApplicationRecord
     post.update(comments_counter: Comment.where(post:).count)
   end
 
-  def delete
-  end
-
   private
 
   def increment_counter_for_post
