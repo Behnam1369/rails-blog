@@ -1,6 +1,6 @@
 <div class="user">
   <% user = User.find(params["id"]) %>
-    <img src="<%= user.photo %>" alt=<%= user.name %>>
+    <img src="<%= user.photo.nil? ? user.default_image : user.photo %>" alt=<%= user.name %>>
     <div>
     <a href="/users/<%= user.id %>">
       <h2><%= user.name %></h2>
