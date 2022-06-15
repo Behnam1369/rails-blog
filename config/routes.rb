@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'users#index'
   get '/users/:user_id/posts', to: 'posts#index'
   delete '/posts/:id/delete', to: 'posts#delete'
   get '/posts/:id/edit', to: 'posts#edit'
