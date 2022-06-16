@@ -61,14 +61,13 @@ class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def like_toggle
     @post = Post.find(params['id'])
-    if Like.where(post: @post, author: current_user).empty?
+    like = Like.where(post: @post, author: current_user)
+    if like.empty?
       like = Like.new(post: @post, author: current_user)
       like.save
-      @post.likes_counter = @post.likes_counter.nil? ? 1 : @post.likes_counter + 1
     else
-      like = Like.where(post: @post, author: current_user)
-      like.destroy_all
-      @post.likes_counter -= 1
+      like = Like.where(post: @post, author: current_user).first
+      like.destroy
     end
     @post.save
     redirect_to "/users/#{params['user_id']}/posts/#{params['id']}"
