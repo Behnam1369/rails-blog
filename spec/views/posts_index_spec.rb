@@ -26,7 +26,7 @@ RSpec.describe 'Post index page test', type: :feature do
     Post.create(author: @first_user, title: 'Fourth Post', text: 'This is my fourth post')
     Post.create(author: @first_user, title: 'Fifth Post', text: 'This is my fifth post')
     Post.create(author: @first_user, title: 'Sixth Post', text: 'This is my sixth post')
-    @post = Post.last 
+    @post = Post.last
     5.times do
       Comment.create(author: @second_user, post: @post, text: 'Hi Tom!!')
     end
