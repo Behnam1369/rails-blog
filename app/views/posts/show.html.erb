@@ -23,7 +23,7 @@
           <span><%= comment.text %></span>
           <span class="commentTime">(<%= comment.updated_at.strftime('%Y-%m-%d') %>)</span>
           <% if can? :destroy , comment %>
-            <%= button_to "Delete comment", "/users/#{post.author.id}/posts/#{post.id}/comments/#{comment.id}/delete", method: :delete, class:'link' %>
+            <%= button_to "Delete comment", "/users/#{post.author.id}/posts/#{post.id}/comments/#{comment.id}/delete", method: :delete, class:'delete_comment' %>
           <% end %>
         </li>
       <% end %>
@@ -31,9 +31,9 @@
     </div>
     <%= form_with model: @like,  url: "/users/#{params['user_id']}/posts/#{params['id']}/like_toggle", method: :post , local: true do |form|%>
       <a href=<%="#{post.id}/comments/new"%>>Add comment</a>
-      <%= form.submit "Like/Unlike this post" %>
+      <%= form.submit "Like/Unlike this post", method: :post %>
     <% end %>
     <% if can? :destroy , post %>
-      <%= button_to "Delete post", "/posts/#{post.id}/delete", method: :delete, class:'link' %>
+      <%= button_to "Delete post", "/posts/#{post.id}/delete", method: :delete, class:'delete_post' %>
     <% end %>
   </div>
