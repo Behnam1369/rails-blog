@@ -21,7 +21,7 @@
   <%= user.bio %>
 </p>
 <ul>
-  <% user.last_3_posts.each do |post| %>
+  <% user.last_3_posts.reverse.each do |post| %>
     <li class="post">
       <a href="/users/<%= user.id %>/posts/<%= post.id %>"> 
         <h2><%= post.title %></h2> 
