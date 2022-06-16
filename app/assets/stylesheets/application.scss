@@ -210,6 +210,56 @@ $c2: #600db1;
   }
 }
 
+@mixin pagination {
+  .pagination ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+
+    li {
+      list-style: none;
+
+      a {
+        background-color: #fff;
+        color: $c1;
+        font-weight: bold;
+        font-size: 18px;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        border-radius: 5px;
+        border: solid 1px #fff;
+      }
+
+      a.active {
+        background-color: $c2;
+        color: #fff;
+      }
+
+      a:hover {
+        background-color: $c1;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.alert {
+  color: red;
+  background-color: rgba(255, 255, 255, 0.869);
+  text-align: center;
+  padding: 15px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 .layout {
   h2 {
     text-align: center;
@@ -231,6 +281,7 @@ html {
     @include post;
     @include comments;
     @include container;
+    @include pagination;
 
     h1 {
       text-align: center;
@@ -261,6 +312,41 @@ html {
       a:hover {
         background-color: rgba(255, 255, 255, 0.068);
       }
+    }
+
+    .app_layout_header {
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    form[action$="users/sign_out"] {
+      display: inline-block;
+
+      button {
+        background-color: $c2;
+        color: yellow;
+        border: solid 1px $c2;
+        border-radius: 3px;
+        padding: 5px;
+        margin-top: 5px;
+        cursor: pointer;
+      }
+    }
+
+    form[action$="delete"] {
+      display: inline-block;
+    }
+
+    .delete_post,
+    .delete_comment {
+      background-color: $c2;
+      color: yellow;
+      border: solid 1px $c2;
+      border-radius: 3px;
+      padding: 5px;
+      margin-top: 5px;
+      cursor: pointer;
+      margin-left: 30px;
     }
 
     form[action$="new"],

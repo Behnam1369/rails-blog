@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params['id'])
     if @comment.destroy
       flash.now[:notice] = 'Comment deleted successfully'
-      # redirect_to "/users/#{params['user_id']}/posts/#{params['post_id']}", notice: 'Comment deleted'
+      redirect_to "/users/#{params['user_id']}/posts/#{params['post_id']}", notice: 'Comment deleted'
     else
       flash.now[:alert] = 'Error: Comment could not be deleted'
       render :new, locals: { post: }

@@ -3,11 +3,11 @@ class CreatePosts < ActiveRecord::Migration[7.0]
     create_table :posts do |t|
       t.bigint :author_id, index: true
       t.string :title
-      t.string :text
+      t.text :text
 
       t.timestamps
-      t.integer :comments_counter
-      t.integer :likes_counter
+      t.integer :comments_counter, default: 0
+      t.integer :likes_counter, default: 0
     end
 
     add_foreign_key :posts, :users, column: :author_id, primary_key: :id

@@ -15,7 +15,12 @@
     </div>
 </div>
 <ul>
-  <% Post.where(author: user).each do |post| %>
+  <% params['page_no'] ||= 1
+     current_page = params['page_no'].to_i
+     page_size = 5
+     total_posts = user.posts.count
+     total_pages = (total_posts/page_size).to_i + 1
+     Post.where(author: user).order(created_at: :desc)[(current_page -1) * page_size..(page_size * current_page) - 1 ].each  do |post| %>
     <li class="post">
       <a href="/users/<%= user.id %>/posts/<%= post.id %>"> 
         <h2><%= post.title %></h2> 
@@ -39,6 +44,19 @@
     </li>
   <% end %>
 </ul>
+<div class="pagination">
+  <% current_page ||= 1 
+     page_size = 5
+     total_posts = user.posts.count
+  %>
+  <ul>
+    <%(1 .. total_pages).each do |i|%>
+    <li>
+      <%= link_to i, "/users/#{user.id}/posts/page/#{i}", method: :get, class: i == current_page ? "active" : '' %>
+    </li>
+    <%end%>
+  </ul>
+</div>
 <div class="links">
   <a href="/users/<%= user.id %>" class="btn"> Go back to user page </a>
   <a href="/users" class="btn"> See all users </a>
