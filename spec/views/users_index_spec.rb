@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'User index page test', type: :feature do
-
   before :all do
     @first_user ||= User.create(
       name: 'Tom',
@@ -27,12 +26,12 @@ RSpec.describe 'User index page test', type: :feature do
     Post.create(author: @first_user, title: 'Fourth Post', text: 'This is my fourth post')
     Post.create(author: @first_user, title: 'Fifth Post', text: 'This is my fifth post')
     post = Post.first
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
   end
 
   before :each do
@@ -49,7 +48,7 @@ RSpec.describe 'User index page test', type: :feature do
     @first_user.destroy
     @second_user.destroy
   end
-  
+
   it 'Username of all other users should be visible.' do
     User.all.each do |user|
       expect(page).to have_content(user.name)
