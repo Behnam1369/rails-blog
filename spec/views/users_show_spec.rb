@@ -26,9 +26,9 @@ RSpec.describe 'User show page test', type: :feature do
                 likes_counter: 0)
     Post.create(author: @first_user, title: 'Fifth Post', text: 'This is my fifth post', comments_counter: 0,
                 likes_counter: 0)
-    post = Post.first
+    @post = Post.first
     6.times do
-      Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
+      Comment.create(author: @second_user, post: @post, text: 'Hi Tom!!')
     end
   end
 

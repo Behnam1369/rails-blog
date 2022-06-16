@@ -25,13 +25,11 @@ RSpec.describe 'User index page test', type: :feature do
     Post.create(author: @first_user, title: 'Third Post', text: 'This is my third post')
     Post.create(author: @first_user, title: 'Fourth Post', text: 'This is my fourth post')
     Post.create(author: @first_user, title: 'Fifth Post', text: 'This is my fifth post')
-    post = Post.first
-    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post:, text: 'Hi Tom!!')
+    @post = Post.first
+
+    6.times do
+      Comment.create(author: @second_user, post: @post, text: 'Hi Tom!!')
+    end
   end
 
   before :each do
