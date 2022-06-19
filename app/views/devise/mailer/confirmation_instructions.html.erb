@@ -1,5 +1,13 @@
-<p>Welcome <%= @email %>!</p>
+<style>
+  .mail {
+    color: #8430d9;
+    font-family: Helvetica;
+  }
+</style>
+<div class="mail">
+  <p>Welcome <b><%= @email %></b>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+  <p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+  <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+</div>

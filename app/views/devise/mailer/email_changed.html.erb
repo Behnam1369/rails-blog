@@ -1,7 +1,15 @@
-<p>Hello <%= @email %>!</p>
+<style>
+  .mail {
+    color: #8430d9;
+    font-family: Helvetica;
+  }
+</style>
+<div class="mail">
+  <p>Hello <b><%= @email %></b>!</p>
 
-<% if @resource.try(:unconfirmed_email?) %>
-  <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
-<% else %>
-  <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
-<% end %>
+  <% if @resource.try(:unconfirmed_email?) %>
+    <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
+  <% else %>
+    <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
+  <% end %>
+</div>
