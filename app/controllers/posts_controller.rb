@@ -18,10 +18,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(params.require(:post).permit(:title, :text))
+    @post = Post.create(post_params)
     @post.author = current_user
-    @post.comments_counter = 0
-    @post.likes_counter = 0
+    # @post.comments_counter = 0
+    # @post.likes_counter = 0
     if @post.save
       redirect_to "/users/#{@post.author.id}/posts/#{@post.id}"
     else
@@ -33,9 +33,9 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params['id'])
     @post['title'] = params[:post][:title]
-    @post['text'] = params[:post][:text]
-    @post['comments_counter'] = 0 if params[:post][:comments_counter].nil?
-    @post['likes_counter'] = 0 if params[:post][:likes_counter].nil?
+    @post['description'] = params[:post][:description]
+    # @post['comments_counter'] = 0 if params[:post][:comments_counter].nil?
+    # @post['likes_counter'] = 0 if params[:post][:likes_counter].nil?
 
     if @post.save
       redirect_to "/users/#{@post.author.id}/posts/#{params['id']}"
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
                   notice: 'Post deleted'
     else
       flash.now[:error] = 'Error: Post could not be deleted'
-      render :show
+      # render :show
     end
   end
 
@@ -74,6 +74,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit!
+    params.require(:post).permit(:title, :description)
   end
 end
