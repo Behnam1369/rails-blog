@@ -4,7 +4,19 @@
 
 # Blog App
 
-A blogging platform written using Ruby on Rails. 
+A blogging platform created using Ruby on Rails. 
+
+# How it looks like
+
+![Recordide gif](./Recording.gif)
+
+# Live demo 
+
+Please check out the [live demo deployed on heroku](http://rails-blog1000.herokuapp.com/users/sign_in). 
+
+# Presentational Video 
+
+[![IMAGE THUMBNAIL](./ThumbnailVideo.png)](https://www.youtube.com/watch?v=omVAGb6t2aY)
 
 # Requirements for this project
 
