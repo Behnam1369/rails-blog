@@ -4,5 +4,9 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.21.0"
+  },
+  "dependencies": {
+    "@rails/actiontext": "^6.0.5",
+    "trix": "^2.0.0-beta.0"
   }
 }

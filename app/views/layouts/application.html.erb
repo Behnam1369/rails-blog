@@ -7,22 +7,24 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <div class="app_layout_header">Welcome <b><%= current_user.name %></b> | 
-      <%= button_to "Log out", 
-            destroy_user_session_path, 
-            method: :delete,
-            class:'link' %>
-      </div>
-    <% end %>
     <% if notice.to_s != '' %>
       <div class="notice"><%= notice %></div>
     <% end %>
     <% if alert.to_s != '' %>
       <div class="alert"><%= alert %></div>
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="app_layout_header">Welcome <b><%= current_user.name %></b> | 
+      <%= button_to "Log out", 
+            destroy_user_session_path, 
+            method: :delete,
+            data: { turbo: false },
+            class:'link' %>
+      </div>
     <% end %>
     <div class="layout"><%= yield %></div>
     

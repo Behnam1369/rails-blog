@@ -1,6 +1,10 @@
 <div class="user">
   <% user = User.find(params["id"]) %>
-    <img src="<%= user.photo.nil? ? user.default_image : user.photo %>" alt=<%= user.name %>>
+    <% if user.image.attached? %>
+      <%= image_tag(user.image) %>
+    <% else %>
+      <img src="<%= user.default_image%>" alt=<%= user.name %>>
+    <% end %>
     <div>
     <a href="/users/<%= user.id %>">
       <h2><%= user.name %></h2>
@@ -12,6 +16,10 @@
         <a href="/users/<%= user.id %>/posts"> Number of posts: <%= user.posts_counter %> </a>
       <% end %>
     </span>
+    <% if user == current_user %>
+      <%= link_to "New Post", "/posts/new", class:"new_post" %>
+      <%= link_to "Edit Profile", "/users/edit", class:"edit_profile" %>
+    <% end %>
     </div>
 </div>
 <p class="bio">
@@ -20,6 +28,7 @@
   <br/>
   <%= user.bio %>
 </p>
+<h3>Recent posts: </h3>
 <ul>
   <% user.last_3_posts.reverse.each do |post| %>
     <li class="post">

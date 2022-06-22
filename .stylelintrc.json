@@ -38,6 +38,7 @@
   "ignoreFiles": [
     "build/**",
     "dist/**",
+    "**/actiontext.css",
     "**/reset*.css",
     "**/bootstrap*.css"
   ]
