@@ -4,8 +4,8 @@
     <%= form.text_field :title %>
   </div>
   <div>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
+    <%= form.label :description %><br>
+    <%= form.rich_text_area :description %>
   </div>
   <%= form.submit "Submit" %>
   <% if @post.errors.any? %>
