@@ -5,7 +5,7 @@
   </div>
   <div>
     <%= form.label :description %><br>
-    <%= form.rich_text_area :description %>
+    <%= form.rich_text_area :description, class:'rich_text' %>
   </div>
   <%= form.submit "Submit" %>
   <% if @post.errors.any? %>
