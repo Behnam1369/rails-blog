@@ -42,7 +42,7 @@ $c2: #600db1;
         text-decoration: none;
         color: #fff;
 
-        h2 {
+        h3 {
           text-align: left;
           font-size: 25px;
         }
@@ -53,9 +53,40 @@ $c2: #600db1;
       }
 
       span {
-        float: right;
+        float: left;
         color: rgba(255, 255, 255, 0.59);
         font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .new_post,
+      .edit_profile {
+        float: right;
+        margin: 0 10px;
+        text-decoration: underline;
+        font-size: 13px;
+      }
+
+    }
+
+    @media only screen and (max-width: 440px) {
+      div {
+        padding: 10px 10px;
+        width: calc(100% - 150px);
+
+        h2 {
+          margin: 0;
+        }
+
+        .new_post,
+        .edit_profile {
+          float: left;
+          margin-left: 0;
+          margin-bottom: 5px;
+          display: block;
+          clear: left;
+          opacity: 0.8;
+        }
       }
     }
   }
@@ -68,10 +99,15 @@ $c2: #600db1;
       background-image: linear-gradient(to top, $c2, #4a0b87);
     }
   }
+
+  h3 {
+    margin-left: 20px;
+    margin-top: 40px;
+  }
 }
 
 @mixin bio {
-  >p {
+  p.bio {
     width: calc(100% - 80px);
     background-image: linear-gradient(to top, #600db187, $c2);
     border-radius: 20px;
@@ -120,8 +156,11 @@ $c2: #600db1;
     }
 
     form {
+      display: inline-block;
+      padding-bottom: 20px;
+
       a {
-        display: inline-block;
+        display: inline;
         color: #fffe8c;
       }
 
@@ -129,6 +168,17 @@ $c2: #600db1;
         background-color: transparent;
         border: none;
         color: #fffe8c;
+        cursor: pointer;
+      }
+
+      button[type="submit"] {
+        background-color: red;
+        border: solid 1px white;
+        padding: 5px;
+        border-radius: 5px;
+        margin-left: 30px;
+        border: none;
+        color: #fff;
         cursor: pointer;
       }
     }
@@ -256,8 +306,7 @@ $c2: #600db1;
   background-color: rgba(255, 255, 255, 0.869);
   text-align: center;
   padding: 15px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-radius: 20px;
 }
 
 .notice {
@@ -265,12 +314,11 @@ $c2: #600db1;
   background-color: rgba(255, 255, 255, 0.869);
   text-align: center;
   padding: 15px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-radius: 20px;
 }
 
 .layout {
-  h2 {
+  >h2 {
     text-align: center;
   }
 }
@@ -286,9 +334,10 @@ html {
   font-family: Helvetica, sans-serif;
 
   body {
-    width: 100%;
+    width: calc(100% - 20px);
     max-width: 780px;
     margin: auto;
+    padding: 10px;
 
     @include user;
     @include bio;
@@ -348,7 +397,7 @@ html {
     }
 
     form[action$="delete"] {
-      display: inline-block;
+      display: inline;
     }
 
     .delete_post,
@@ -369,9 +418,11 @@ html {
 
       div {
         text-align: left;
+        margin-bottom: 15px;
 
         input[type="text"],
-        textarea {
+        textarea,
+        .rich_text {
           width: calc(100% - 10px);
           font-family: Helvetica, sans-serif;
           border-radius: 10px;
@@ -383,6 +434,17 @@ html {
           margin: 10px 0;
         }
 
+        .rich_text {
+          width: calc(100% - 35px);
+          height: 450px;
+          overflow: auto;
+        }
+
+        .trix-button-row {
+          flex-wrap: wrap;
+          width: 100%;
+        }
+
         input[type="text"] {
           height: 35px;
         }
@@ -392,10 +454,16 @@ html {
         }
 
         input[type="text"]:focus,
-        textarea:focus {
+        textarea:focus,
+        .rich_text:focus {
           border: solid 3px $c2;
           background-color: #fff;
         }
+
+        .trix-button {
+          background-color: #fff;
+        }
+
       }
 
       input[type="submit"] {
@@ -408,8 +476,8 @@ html {
         outline: none;
         height: 60px;
         border: solid 3px $c2;
-        margin: auto;
         opacity: 0.9;
+        float: left;
       }
 
       input[type="submit"]:hover {
@@ -417,6 +485,23 @@ html {
         opacity: 1;
         cursor: pointer;
       }
+    }
+
+    .frm_user_edit {
+      margin-bottom: 90px;
+    }
+
+    .btn_back {
+      width: 100%;
+      padding-top: 20px;
+      font-family: Helvetica, sans-serif;
+      color: yellow;
+      font-size: 25px;
+      outline: none;
+      height: 60px;
+      opacity: 0.75;
+      display: block;
+      text-align: center;
     }
   }
 }
