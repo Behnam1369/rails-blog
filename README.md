@@ -42,15 +42,6 @@ Please check out the [live demo deployed on heroku](http://rails-blog1000.heroku
 
 [11- Add API endpoints](https://github.com/microverseinc/curriculum-rails/blob/main/blog-app/blog_app_api_endpoints.md)
 
-# Demo of the app
-
-Will be added
-
-
-# Project screenshots
-
-Will be added
-
 ## Installation & Usage
 
 To get a local copy follow these simple example steps. 
